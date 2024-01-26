@@ -1,0 +1,1 @@
+# GGD - Quickie style

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 846735c11bce08b4b85918af02adbd2f, type: 3}
+  m_Name: Peasant_Bruno
+  m_EditorClassIdentifier: 
+  _name: Bruno
+  _description: 
+  _name: Socrates
+  _sickLevel: 20
+  _rizzLevel: 1000
