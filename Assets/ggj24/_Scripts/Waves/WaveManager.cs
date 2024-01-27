@@ -1,7 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class WaveManager : MonoBehaviour
+using yaSingleton;
+
+[CreateAssetMenu(fileName = "Manager_", menuName = "Singletons/WaveManager")]
+public class WaveManager : Singleton<WaveManager>
 {
     [SerializeField] List<Wave> _waves;
     private IEnumerator<Wave> _waveIterator;
@@ -59,8 +63,8 @@ public class WaveManager : MonoBehaviour
         {
             var peasant = _peasantsIterator.Current;
             yield return new WaitForSeconds(MIN_TIME_BTW_PEASANTS);
-            Debug.Log("Started Peasant: " + peasant.Name);
-            // CALL/ ENABLE THIS PEASANT.
+
+            EnemyManager.Instance.InitEnemy(peasant);
         }
         Debug.Log("Wave Started!" );
         //yield return StartCoroutine(COR_WaitForWaveCleanUp());
