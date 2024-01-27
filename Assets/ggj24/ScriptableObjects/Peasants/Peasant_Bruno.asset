@@ -15,12 +15,12 @@ MonoBehaviour:
   _name: Bruno
   _description: 
   _peasantName: Bruno
-  _walkDuration: 10
-  _jumpForce: 4
-  _maxHealth: 100
-  _damageTaken: 5
+  _walkDuration: 5
+  _jumpForce: 1.5
+  _maxHealth: 1
+  _damageTaken: 1
   _jumpDuration: 0.2
   _fallDuration: 1
-  _infected: {fileID: 21300000, guid: b384f48392f073d4cade204294a2e702, type: 3}
+  _infected: {fileID: 21300000, guid: d4b382c6f10e7a64d8758e6a629b446b, type: 3}
   _halfCured: {fileID: 21300000, guid: ead43e504489ac24fbc62cfa149bd4e4, type: 3}
-  _cured: {fileID: 21300000, guid: 0c1f0180ab4549044a0a15d1bc2a0783, type: 3}
+  _cured: {fileID: 21300000, guid: 5a3f6add1a066da42b7d8e087986c14c, type: 3}

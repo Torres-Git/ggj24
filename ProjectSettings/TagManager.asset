@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Castle
   - Bounds
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -42,4 +43,43 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BACKDROP
+    uniqueID: 1474796837
+    locked: 0
+  - name: BACKGROUND
+    uniqueID: 882466023
+    locked: 0
+  - name: BACKGROUND_ELEMENTS
+    uniqueID: 793363267
+    locked: 0
+  - name: BACKGROUND_FLOOR
+    uniqueID: 3209262797
+    locked: 0
+  - name: FACE
+    uniqueID: 3488145703
+    locked: 0
+  - name: CASTLE
+    uniqueID: 1575422969
+    locked: 0
+  - name: CABLES
+    uniqueID: 2417506439
+    locked: 0
+  - name: STICKS
+    uniqueID: 1740456325
+    locked: 0
+  - name: FOREGROUND_FLOOR
+    uniqueID: 1175237299
+    locked: 0
+  - name: HANDS
+    uniqueID: 1187289227
+    locked: 0
+  - name: PEASANTS
+    uniqueID: 3239525637
+    locked: 0
+  - name: CURTAINS
+    uniqueID: 1507291043
+    locked: 0
+  - name: MAIN_CURTAIN
+    uniqueID: 682436697
     locked: 0
