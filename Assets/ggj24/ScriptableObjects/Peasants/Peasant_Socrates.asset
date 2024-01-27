@@ -17,4 +17,3 @@ MonoBehaviour:
   _name: Socrates
   _sickLevel: 100
   _rizzLevel: 2
-  _appearance: {fileID: 21300000, guid: 3f39c5df786d8c94aa0ad598e812c575, type: 3}
