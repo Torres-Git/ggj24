@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 8218866636318424991, guid: 21ee9db31dba93b4594a16488bc631bf, type: 3}
   _enemyAmount: 12
-  _enemyRightPos: {x: 12, y: -3.5, z: 0}
-  _enemyLeftPos: {x: -12, y: -3.5, z: 0}
+  _enemyRightPos: {x: 12, y: -2, z: 0}
+  _enemyLeftPos: {x: -12, y: -2, z: 0}
