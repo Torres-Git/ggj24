@@ -11,20 +11,9 @@ public class MenuManager : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void Play()
     {
         SceneManager.LoadScene("Theater");
-    }
-
-    public void Settings()
-    {
-        Debug.Log("Opening settings...");
     }
 
     public void Quit()
