@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f77eceedcb49ec342a09d25d5587cdd7, type: 3}
   m_Name: Tiago
   m_EditorClassIdentifier: 
-  spawnLeft: 0
-  walkSpeed: 0.5
+  walkSpeed: 500
   jumpForce: 1
   maxHealth: 50
   damageTaken: 2
   jumpDuration: 0.2
+  weight: 0.5
+  fallSpeed: 0.5
   infected: {fileID: 7482667652216324306, guid: b384f48392f073d4cade204294a2e702, type: 3}
   halfCured: {fileID: 7482667652216324306, guid: ead43e504489ac24fbc62cfa149bd4e4, type: 3}
   cured: {fileID: 7482667652216324306, guid: 0c1f0180ab4549044a0a15d1bc2a0783, type: 3}

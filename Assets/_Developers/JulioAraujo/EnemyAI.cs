@@ -29,14 +29,6 @@ public class EnemyAI : MonoBehaviour
         enemySprite.sprite = peasant.infected;
         health = peasant.maxHealth;
         halfHealth = health/2f;
-        //if (peasant.spawnLeft)
-        //{
-        //    direction = 1;
-        //}
-        //else
-        //{
-        //    direction = -1;
-        //}
         groundPosition = transform.position.y;
         transform.DOMoveX(-transform.position.x, peasant.walkSpeed).SetEase(Ease.OutExpo);
 
@@ -64,20 +56,22 @@ public class EnemyAI : MonoBehaviour
             enemySprite.sprite = peasant.cured;
         }
 
+
+
         if (isClicked)
         {
             //rb.gravityScale = 0f;
-
-            transform.DOBlendableLocalMoveBy(new Vector3(0f, peasant.jumpForce, 0f), peasant.jumpDuration);
-            //yAxis.DOJump(new Vector3(transform.position.x, groundPosition, transform.position.z), peasant.jumpForce, 1, peasant.jumpDuration);
             
+            transform.DOBlendableLocalMoveBy(new Vector3(0f, peasant.jumpForce, 0f), peasant.jumpDuration);
+            transform.DOBlendableLocalMoveBy(new Vector3(0f, -peasant.weight, 0f), peasant.fallSpeed); 
+            
+
             //rb.AddForce(Vector2.up * peasant.floatSpeed);
             //transform.position += Vector3.up * Time.deltaTime * floatSpeed;
         }
-            //else
-            //{
-            //    rb.gravityScale = 1f;
-            //}
+        else
+        {
+        }
 
         if (isClicked && !enemyRenderer.isVisible)
         {
