@@ -9,7 +9,7 @@ public class TickleMaster : MonoBehaviour
     [SerializeField] SpriteAnim _spriteAnim;
     [SerializeField] float _tickleRadius;
     [SerializeField] LayerMask _layerMask;
-    private bool _isTickling = false;
+    [SerializeField] private bool _isTickling = false;
 
     private void Update() 
     {
@@ -21,12 +21,11 @@ public class TickleMaster : MonoBehaviour
     {
         if(_isTickling) return;
         DOTween.Complete(transform);
-        _isTickling = true;
-
+        
         // Replace with your desired origin point (e.g., transform.position)
         Vector2 origin = transform.position;
         // Replace with your desired direction (e.g., transform.right)
-        Vector2 direction = transform.right;
+        Vector2 direction = transform.forward;
 
         // Perform the circle cast
         RaycastHit2D[] hits = Physics2D.CircleCastAll(origin, _tickleRadius, direction, Mathf.Infinity, _layerMask);
@@ -34,9 +33,8 @@ public class TickleMaster : MonoBehaviour
         // Process the hits
         foreach (RaycastHit2D hit in hits)
         {
+            _isTickling = true;
             transform.DOPunchRotation(Vector3.forward * 45, .2f).OnComplete(()=>_isTickling = false);   
-            // Do something with the hit information (e.g., print the name of the object)
-            Debug.Log("Hit: " + hit.collider.gameObject.name);
         }
     }
 
