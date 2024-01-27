@@ -13,10 +13,6 @@ public class EnemyAI : MonoBehaviour
     private float halfHealth;
     [SerializeField] private bool reachedCastle = false;
     [SerializeField] private bool isClicked = false;
-    private int direction;
-    private float groundPosition;
-    [SerializeField] Transform xAxis;
-    [SerializeField] Transform yAxis;
 
 
 
@@ -29,7 +25,6 @@ public class EnemyAI : MonoBehaviour
         enemySprite.sprite = peasant.infected;
         health = peasant.maxHealth;
         halfHealth = health/2f;
-        groundPosition = transform.position.y;
         transform.DOMoveX(-transform.position.x, peasant.walkSpeed).SetEase(Ease.OutExpo);
 
     }
