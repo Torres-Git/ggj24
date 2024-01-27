@@ -10,17 +10,20 @@ public class WaveManager : Singleton<WaveManager>
     [SerializeField] List<Wave> _waves;
     private IEnumerator<Wave> _waveIterator;
     private IEnumerator<Peasant> _peasantsIterator;
-    private float _minTimeBtwPeasant = .2f;
+
     private Wave _currentWave;
     private int _waveNumber = 0;
+    private EnemyManager _enemyManager;
 
     private const float MIN_TIME_BTW_PEASANTS = 1f;
 
     public Wave CurrentWave { get => _currentWave; }
 
     [ContextMenu("Start First Wave")]
-    public void StartFirstWave()
+    public void StartFirstWave(EnemyManager manager)
     {
+        Debug.Log("Enemy Manager:" + manager.name);
+        _enemyManager = manager;
         _waveIterator = _waves.GetEnumerator();
         StartNextWave();
     }

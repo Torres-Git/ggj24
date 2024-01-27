@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using yaSingleton;
@@ -8,22 +7,28 @@ public class EnemyManager : Singleton<EnemyManager>
 {
     [SerializeField] EnemyAI _enemyPrefab;
     [SerializeField] int _enemyAmount;
-    private List<EnemyAI> _enemies;
     [SerializeField] Vector3 _enemyRightPos;
     [SerializeField] Vector3 _enemyLeftPos;
+    [SerializeField] bool _areEnemiesReady = false;
+
+    private List<EnemyAI> _enemies = new List<EnemyAI>();
+    public bool AreEnemiesReady { get => _areEnemiesReady;  }
 
     protected override void Initialize()
     {
-        var parent = Instantiate(new GameObject("Enemy Parent"));
+        base.Initialize();
+        
+       var parent= new GameObject("Enemy Parent");
+        Debug.Log("EnemyManager Init");
 
         for (int i = 0; i < _enemyAmount; i++)
         {
-            var enemy = Instantiate(_enemyPrefab,parent.transform);
+            var enemy = Instantiate(_enemyPrefab, parent.transform);
             enemy.transform.position = (i%2 == 0)? _enemyRightPos: _enemyLeftPos;
             _enemies.Add(enemy);
         }
 
-        base.Initialize();
+        _areEnemiesReady = true;
     }
 
 

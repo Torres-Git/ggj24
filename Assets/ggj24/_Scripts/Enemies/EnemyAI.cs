@@ -19,7 +19,6 @@ public class EnemyAI : MonoBehaviour, IEnemy
     // Start is called before the first frame update
     private void Start()
     {
-        //rb = GetComponent<Rigidbody2D>();
         _enemySprite = GetComponent<SpriteRenderer>();
         _startPosition = transform.position;
     }
