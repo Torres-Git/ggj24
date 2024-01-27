@@ -37,7 +37,7 @@ public class HandManager : MonoBehaviour
 
         _currentHand = (_currentHand == _leftHand) ? _rightHand : _leftHand;
 
-        DOTween.Complete(_currentHand.transform);
+        DOTween.Kill(_currentHand.transform);
         _currentHand.enabled = true;
         // Debug.Log("hand swicthed to:" + _currentHand.name);
     }

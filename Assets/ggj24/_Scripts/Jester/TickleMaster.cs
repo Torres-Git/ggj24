@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using PowerTools;
 using UnityEngine;
 using DG.Tweening;
+using System.Threading.Tasks;
 
 public class TickleMaster : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class TickleMaster : MonoBehaviour
     [SerializeField] float _tickleRadius;
     [SerializeField] LayerMask _layerMask;
     [SerializeField] private bool _isTickling = false;
+    [SerializeField] private Vector2 _castOffset;
+    private Tween _animTween = null;
 
     private void Update() 
     {
@@ -19,8 +22,8 @@ public class TickleMaster : MonoBehaviour
     [ContextMenu("Tickle")]
     public void Tickle()
     {
-        if(_isTickling) return;
-        DOTween.Complete(transform);
+        // if(_isTickling) return;
+        DOTween.Complete(_animTween);
         
         // Replace with your desired origin point (e.g., transform.position)
         Vector2 origin = transform.position;
@@ -28,13 +31,19 @@ public class TickleMaster : MonoBehaviour
         Vector2 direction = transform.forward;
 
         // Perform the circle cast
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(origin, _tickleRadius, direction, Mathf.Infinity, _layerMask);
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(origin + _castOffset, _tickleRadius, direction, Mathf.Infinity, _layerMask);
 
         // Process the hits
-        foreach (RaycastHit2D hit in hits)
-        {
+        if(hits.Length>0)
+        {                
+            var enemy = hits[0].collider.GetComponent<IEnemy>();
+            if(enemy!= null)
+            {
+                enemy.Tickle();
+            }
+
             _isTickling = true;
-            transform.DOPunchRotation(Vector3.forward * 45, .2f).OnComplete(()=>_isTickling = false);   
+            _animTween = transform.DOPunchRotation(Vector3.forward * 45, .2f).OnComplete(()=>_isTickling = false).SetAutoKill(true);   
         }
     }
 
@@ -53,10 +62,12 @@ public class TickleMaster : MonoBehaviour
         Gizmos.color = Color.yellow;
 
         // Draw the circle cast
-        Gizmos.DrawWireSphere(transform.position, _tickleRadius);
+        Gizmos.DrawWireSphere(transform.position+ (Vector3)_castOffset, _tickleRadius);
+
+        Gizmos.color = Color.red;
 
         // Draw the direction of the circle cast
-        Gizmos.DrawLine(transform.position, transform.position + (Vector3)(_tickleRadius * transform.right));
+        Gizmos.DrawLine(transform.position, transform.position + (Vector3)(_tickleRadius * transform.forward));
     }
 #endregion
 }
