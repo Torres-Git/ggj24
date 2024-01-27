@@ -13,6 +13,7 @@ public class WaveManager : MonoBehaviour
     private const float MIN_TIME_BTW_PEASANTS = 1f;
 
     public Wave CurrentWave { get => _currentWave; }
+    public int WaveNumber { get => _waveNumber;}
 
     [ContextMenu("Start First Wave")]
     public void StartFirstWave()
