@@ -13,7 +13,6 @@ public class WaveManager : MonoBehaviour
     private const float MIN_TIME_BTW_PEASANTS = 1f;
 
     public Wave CurrentWave { get => _currentWave; }
-    public int WaveNumber { get => _waveNumber; }
 
     [ContextMenu("Start First Wave")]
     public void StartFirstWave()
@@ -45,7 +44,7 @@ public class WaveManager : MonoBehaviour
 
     private void ProcWaveStartActions(int waveNumber)
     {
-        Debug.Log("Wave Started!");
+        Debug.Log("Wave Started!" );
          // UIManager.instance.DisplayAlertMsg("Wave: " + waveNumber + "/" + _waves.Count, 2.5f);
     }
 
