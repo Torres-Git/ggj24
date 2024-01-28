@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81f8274e24b80a542b356410113a5ed8, type: 3}
+  m_Name: AE_PeasantLaugh
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: b06055a6a0ec0694f8b916128111478e, type: 3}
+  - {fileID: 8300000, guid: e1c4d51a80d6fcf41913ff1c6074cc15, type: 3}
+  - {fileID: 8300000, guid: 673c4bfc2cf45a445a1de5f060ae4275, type: 3}
+  volume:
+    minValue: 0.5977723
+    maxValue: 0.5977723
+  pitch:
+    minValue: 0.8985149
+    maxValue: 1.1460397
+  stereoPan:
+    minValue: 0
+    maxValue: 0

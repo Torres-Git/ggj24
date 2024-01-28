@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81f8274e24b80a542b356410113a5ed8, type: 3}
+  m_Name: AE_DMickeyLaugh
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 1c7e15ae17a77b74f906bfbd7e2742c3, type: 3}
+  - {fileID: 8300000, guid: d5313a470b65b2046971a893b21c14e4, type: 3}
+  - {fileID: 8300000, guid: 4e0e49f43a7342c43a7ab91b2108d98e, type: 3}
+  volume:
+    minValue: 0.44925743
+    maxValue: 0.44925743
+  pitch:
+    minValue: 0.6014852
+    maxValue: 0.6014852
+  stereoPan:
+    minValue: 0
+    maxValue: 0
