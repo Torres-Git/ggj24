@@ -1,36 +1,54 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using yaSingleton;
 
 [CreateAssetMenu(fileName = "Manager_", menuName = "Singletons/GameManager")]
 public class GameManager : Singleton<GameManager>
 {
+    [SerializeField] bool _isPlayable = true;
     [SerializeField] int _score;
     [SerializeField] int _castleMaxHitPoints = 2;
     [SerializeField] float _castleAutoRegenDelay = 0f;
 
     [SerializeField] int _castleCurrentHitPoints;
+    private StageManager _stageManager;
+    private EnemyManager _enemyManager;
+    private WaveManager _waveManager;
     public int Score { get => _score;  }
 
     protected override void Initialize()
     {
         base.Initialize();
-        _castleCurrentHitPoints = _castleMaxHitPoints;
-       var enemyManager = GetOrCreate<EnemyManager>();
-       var waveManager = GetOrCreate<WaveManager>();
         
-        StartCoroutine(COR_WaveDelay(waveManager,enemyManager));
-
-        if(_castleAutoRegenDelay > 0 )
-            StartCoroutine(COR_AutoRegenCastle());
+       _enemyManager = GetOrCreate<EnemyManager>();
+       _waveManager = GetOrCreate<WaveManager>();
     }
 
-    IEnumerator COR_WaveDelay(WaveManager waveManager, EnemyManager enemyManager)
+    public void StartSequence(StageManager stageManager)
     {
-        yield return new WaitUntil(()=> enemyManager.AreEnemiesReady);
-        yield return Yielders.EndOfFrame;
-        
+        StopAllCoroutines();
+        StartCoroutine(COR_StartSequence(stageManager,_waveManager, _enemyManager));
+    }
+
+   private IEnumerator COR_StartSequence(StageManager stageManager, WaveManager waveManager, EnemyManager enemyManager)
+    {
+        _stageManager = stageManager;
+
+        if (_castleAutoRegenDelay > 0)
+            StartCoroutine(COR_AutoRegenCastle());
+
+        _castleCurrentHitPoints = _castleMaxHitPoints;
+
+        yield return Yielders.Get(1f);
+        _enemyManager.ReadyEnemies();
+
+        Debug.Log("enemyManager.AreEnemiesReady:" + enemyManager.AreEnemiesReady);
+
+        // Start the first wave and perform other actions
         waveManager.StartFirstWave(enemyManager);
+        _stageManager.AddSpears();
+        _isPlayable = true;
     }
 
     IEnumerator COR_AutoRegenCastle()
@@ -46,13 +64,63 @@ public class GameManager : Singleton<GameManager>
 
     public int HealCastle(int healAmount)
     {
+        if(!_isPlayable) return _castleCurrentHitPoints;
+
         if(_castleCurrentHitPoints < _castleMaxHitPoints)
         {
             _castleCurrentHitPoints += healAmount;
            if( _castleCurrentHitPoints > _castleMaxHitPoints)
             _castleCurrentHitPoints = _castleMaxHitPoints;
+            _stageManager.AddSpears();
+            
         }
         return _castleCurrentHitPoints;
+    }
+    
+
+    public void DamageCastle(int damageAmount)
+    {
+        if(!_isPlayable) return;
+        _stageManager.RemoveSpears();
+            _castleCurrentHitPoints -= damageAmount;
+        
+        if(_castleCurrentHitPoints <= 1)
+            _stageManager.BounceCastle();
+
+        if(_castleCurrentHitPoints <= 0)
+          Lose();
+
+    }
+
+
+    public void Win()
+    {
+         if(!_isPlayable) return;
+        _isPlayable = false;
+        StartCoroutine(COR_RestartSequence());
+        Debug.Log("WON!!!");
+    }
+    private void Lose()
+    {
+        Debug.Log("LOST!!!");
+        if(!_isPlayable) return;
+        _isPlayable = false;
+        StartCoroutine(COR_RestartSequence());
+    }
+
+    private IEnumerator COR_RestartSequence()
+    {
+        _stageManager.InCurtain();
+
+        // Wait for 3 seconds
+        yield return new WaitForSeconds(3f);
+
+        // Reset enemies and waves
+        WaveManager.Instance.ResetWaves();
+        EnemyManager.Instance.ResetEnemies();
+        // Get the current scene index and reload the scene
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex);
     }
 
     public override void OnUpdate()

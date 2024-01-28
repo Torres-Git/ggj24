@@ -22,11 +22,18 @@ public class WaveManager : Singleton<WaveManager>
     [ContextMenu("Start First Wave")]
     public void StartFirstWave(EnemyManager manager)
     {
-        Debug.Log("Enemy Manager:" + manager.name);
+
         _enemyManager = manager;
         _waveNumber = 0;
         _waveIterator = _waves.GetEnumerator();
         StartNextWave();
+    }
+
+    public void ResetWaves()
+    {
+        // StopAllCoroutines();
+        _waveNumber = 0;
+        _waveIterator = _waves.GetEnumerator();
     }
 
     private void StartNextWave()
@@ -41,8 +48,7 @@ public class WaveManager : Singleton<WaveManager>
         }
         else
         {
-            Debug.Log("No more waves Available.");
-            //GameManager.instance.Win();
+            GameManager.Instance.Win();
             return;
         }
 

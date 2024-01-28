@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using yaSingleton;
@@ -17,9 +18,11 @@ public class EnemyManager : Singleton<EnemyManager>
     protected override void Initialize()
     {
         base.Initialize();
-        
-       var parent= new GameObject("Enemy Parent");
-        Debug.Log("EnemyManager Init");
+        ResetEnemies();
+        _enemies.Clear();
+
+        var parent= new GameObject("Enemy Parent");
+        DontDestroyOnLoad(parent);
 
         for (int i = 0; i < _enemyAmount; i++)
         {
@@ -29,17 +32,28 @@ public class EnemyManager : Singleton<EnemyManager>
                 enemy.transform.position = _enemyRightPos;
                 enemy.EnemySprite.flipX = true;
 
-            }else
+            }
+            else
             {
                 enemy.transform.position =_enemyLeftPos;
                 enemy.EnemySprite.flipX = false;
             }
+
             _enemies.Add(enemy);
         }
+        
 
+      _areEnemiesReady = true;
+    }
+    public void ReadyEnemies()
+    {
         _areEnemiesReady = true;
     }
-
+    public void ResetEnemies()
+    {
+        _areEnemiesReady = false;
+    }
+    
 
     public void InitEnemy(Peasant peasantData)
     {
@@ -54,6 +68,7 @@ public class EnemyManager : Singleton<EnemyManager>
             }
         }
     }
+
 
 
    public override void OnUpdate()
