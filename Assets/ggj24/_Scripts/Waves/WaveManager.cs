@@ -17,7 +17,7 @@ public class WaveManager : Singleton<WaveManager>
     private const float MIN_TIME_BTW_PEASANTS = 1f;
 
     public Wave CurrentWave { get => _currentWave; }
-    public int WaveNumber { get => _waveNumber;}
+    public int WaveNumber { get => _waveNumber; }
 
     [ContextMenu("Start First Wave")]
     public void StartFirstWave()
@@ -43,20 +43,20 @@ public class WaveManager : Singleton<WaveManager>
             return;
         }
 
-        if(_currentWave)
+        if (_currentWave)
             StartCoroutine(COR_Wave(_currentWave));
     }
 
     private void ProcWaveStartActions(int waveNumber)
     {
-        Debug.Log("Wave Started!" );
-         // UIManager.instance.DisplayAlertMsg("Wave: " + waveNumber + "/" + _waves.Count, 2.5f);
+        Debug.Log("Wave Started!");
+        // UIManager.instance.DisplayAlertMsg("Wave: " + waveNumber + "/" + _waves.Count, 2.5f);
     }
 
 
     private IEnumerator COR_Wave(Wave waveData)
     {
-        yield return  Yielders.Get(waveData.RestDurationBeforeWave);
+        yield return Yielders.Get(waveData.RestDurationBeforeWave);
         _peasantsIterator = waveData.Peasants.GetEnumerator();
 
         while (_peasantsIterator.MoveNext())
@@ -66,7 +66,7 @@ public class WaveManager : Singleton<WaveManager>
 
             EnemyManager.Instance.InitEnemy(peasant);
         }
-        Debug.Log("Wave Started!" );
+        Debug.Log("Wave Started!");
         //yield return StartCoroutine(COR_WaitForWaveCleanUp());
         yield return Yielders.Get(1f);
 
@@ -74,7 +74,7 @@ public class WaveManager : Singleton<WaveManager>
         //GameManager.Instance.WavesConquered++;??
         StartNextWave();
     }
-    
+
     /*
     private IEnumerator COR_WaitForWaveCleanUp()
     {

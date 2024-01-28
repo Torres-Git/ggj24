@@ -2,17 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
+using TMPro;
 
 public class OptionsManager : MonoBehaviour
 {
     public RectTransform sliderMenu;
+
+    [SerializeField] private Slider musicS, soundS;
+    [SerializeField] private TextMeshProUGUI soundV, musicV;
 
     private bool isDown = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        musicS.onValueChanged.AddListener((v) =>
+        {
+            musicV.text = v.ToString();
+        });
 
+        soundS.onValueChanged.AddListener((v) =>
+        {
+            soundV.text = v.ToString();
+        });
     }
 
     // Update is called once per frame
