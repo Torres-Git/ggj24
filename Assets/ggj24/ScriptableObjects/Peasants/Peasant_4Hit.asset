@@ -10,17 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 846735c11bce08b4b85918af02adbd2f, type: 3}
-  m_Name: Peasant_Socrates
+  m_Name: Peasant_4Hit
   m_EditorClassIdentifier: 
-  _name: Socrates
-  _description: 
-  _peasantName: Socrates
-  _walkDuration: 5
+  _name: Tiago
+  _description: 4 hit kill enemy with the slowest walk speed and heavier jump
+  _peasantName: Tiago
+  _walkDuration: 9
   _jumpForce: 1.5
-  _maxHealth: 1
+  _maxHealth: 4
   _damageTaken: 1
-  _jumpDuration: 0.2
+  _jumpDuration: 0.3
   _fallDuration: 1
   _infected: {fileID: 21300000, guid: d4b382c6f10e7a64d8758e6a629b446b, type: 3}
-  _halfCured: {fileID: 21300000, guid: ead43e504489ac24fbc62cfa149bd4e4, type: 3}
   _cured: {fileID: 21300000, guid: 5a3f6add1a066da42b7d8e087986c14c, type: 3}

@@ -13,11 +13,9 @@ MonoBehaviour:
   m_Name: Wave_1
   m_EditorClassIdentifier: 
   _name: 
-  _description: 
-  _restDurationBeforeWave: 3
+  _description: starting wave with just one easy enemy
+  _restDurationBeforeWave: 1.5
   _extraDurationWindow: 2
   _peasants:
-  - {fileID: 11400000, guid: 84db5eb5ef4f9d24f879e65c512057fd, type: 2}
-  - {fileID: 11400000, guid: 84db5eb5ef4f9d24f879e65c512057fd, type: 2}
   - {fileID: 11400000, guid: 84db5eb5ef4f9d24f879e65c512057fd, type: 2}
   _duration: 0
