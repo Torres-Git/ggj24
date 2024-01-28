@@ -31,7 +31,7 @@ public class WaveManager : Singleton<WaveManager>
 
     public void ResetWaves()
     {
-        StopAllCoroutines();
+        // StopAllCoroutines();
         _waveNumber = 0;
         _waveIterator = _waves.GetEnumerator();
     }
@@ -48,8 +48,7 @@ public class WaveManager : Singleton<WaveManager>
         }
         else
         {
-            Debug.Log("No more waves Available.");
-            //GameManager.instance.Win();
+            GameManager.Instance.Win();
             return;
         }
 

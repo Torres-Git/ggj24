@@ -92,17 +92,24 @@ public class GameManager : Singleton<GameManager>
 
     }
 
+
+    public void Win()
+    {
+         if(!_isPlayable) return;
+        _isPlayable = false;
+        StartCoroutine(COR_RestartSequence());
+        Debug.Log("WON!!!");
+    }
     private void Lose()
     {
+        Debug.Log("LOST!!!");
         if(!_isPlayable) return;
         _isPlayable = false;
-        StartCoroutine(COR_LoseSequence());
+        StartCoroutine(COR_RestartSequence());
     }
 
-    private IEnumerator COR_LoseSequence()
+    private IEnumerator COR_RestartSequence()
     {
-        Debug.Log("You almost Lost");
-
         _stageManager.InCurtain();
 
         // Wait for 3 seconds
@@ -111,7 +118,6 @@ public class GameManager : Singleton<GameManager>
         // Reset enemies and waves
         WaveManager.Instance.ResetWaves();
         EnemyManager.Instance.ResetEnemies();
-
         // Get the current scene index and reload the scene
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex);
