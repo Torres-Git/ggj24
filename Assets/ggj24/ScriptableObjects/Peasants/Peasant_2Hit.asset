@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 846735c11bce08b4b85918af02adbd2f, type: 3}
+  m_Name: Peasant_2Hit
+  m_EditorClassIdentifier: 
+  _name: Torres
+  _description: 2 hit kill slower enemy
+  _peasantName: Torres
+  _walkDuration: 6.5
+  _jumpForce: 2.5
+  _maxHealth: 2
+  _damageTaken: 1
+  _jumpDuration: 0.2
+  _fallDuration: 1
+  _infected: {fileID: 21300000, guid: d4b382c6f10e7a64d8758e6a629b446b, type: 3}
+  _halfCured: {fileID: 21300000, guid: ead43e504489ac24fbc62cfa149bd4e4, type: 3}
+  _cured: {fileID: 21300000, guid: 5a3f6add1a066da42b7d8e087986c14c, type: 3}

@@ -10,16 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4161eaa16d2b58045838428521ec4485, type: 3}
-  m_Name: Wave_3
+  m_Name: Wave_6
   m_EditorClassIdentifier: 
   _name: 
   _description: 
   _restDurationBeforeWave: 3
   _extraDurationWindow: 2
   _peasants:
-  - {fileID: 11400000, guid: 84db5eb5ef4f9d24f879e65c512057fd, type: 2}
-  - {fileID: 11400000, guid: 84db5eb5ef4f9d24f879e65c512057fd, type: 2}
-  - {fileID: 11400000, guid: 92d63d5f3ae83d542945707e1ff45516, type: 2}
-  - {fileID: 11400000, guid: 92d63d5f3ae83d542945707e1ff45516, type: 2}
   - {fileID: 11400000, guid: 221d6d9d40339b54da9ae1a1edfb8b76, type: 2}
+  - {fileID: 11400000, guid: 84db5eb5ef4f9d24f879e65c512057fd, type: 2}
+  - {fileID: 11400000, guid: 221d6d9d40339b54da9ae1a1edfb8b76, type: 2}
+  - {fileID: 11400000, guid: 481f216f91c1fd74ca9777b0c6f10fd7, type: 2}
+  - {fileID: 11400000, guid: 92d63d5f3ae83d542945707e1ff45516, type: 2}
+  - {fileID: 11400000, guid: 5d76db2f78c52a146a0767e3d9157919, type: 2}
+  - {fileID: 11400000, guid: 84db5eb5ef4f9d24f879e65c512057fd, type: 2}
+  - {fileID: 11400000, guid: 92d63d5f3ae83d542945707e1ff45516, type: 2}
+  - {fileID: 11400000, guid: 92d63d5f3ae83d542945707e1ff45516, type: 2}
   _duration: 0

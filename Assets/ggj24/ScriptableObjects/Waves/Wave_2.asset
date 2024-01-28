@@ -17,7 +17,7 @@ MonoBehaviour:
   _restDurationBeforeWave: 3
   _extraDurationWindow: 2
   _peasants:
-  - {fileID: 11400000, guid: 92d63d5f3ae83d542945707e1ff45516, type: 2}
+  - {fileID: 11400000, guid: 84db5eb5ef4f9d24f879e65c512057fd, type: 2}
   - {fileID: 11400000, guid: 92d63d5f3ae83d542945707e1ff45516, type: 2}
   - {fileID: 11400000, guid: 92d63d5f3ae83d542945707e1ff45516, type: 2}
   _duration: 0

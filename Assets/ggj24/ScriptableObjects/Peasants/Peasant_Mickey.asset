@@ -10,17 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 846735c11bce08b4b85918af02adbd2f, type: 3}
-  m_Name: Peasant_Bruno
+  m_Name: Peasant_Mickey
   m_EditorClassIdentifier: 
-  _name: Bruno
-  _description: 
-  _peasantName: Bruno
-  _walkDuration: 5
-  _jumpForce: 1.5
-  _maxHealth: 1
+  _name: Mickey
+  _description: Big scary rat, fast walk speed needing 5 hits to kill
+  _peasantName: Mickey
+  _walkDuration: 4.8
+  _jumpForce: 1.2
+  _maxHealth: 5
   _damageTaken: 1
-  _jumpDuration: 0.2
+  _jumpDuration: 0.1
   _fallDuration: 1
-  _infected: {fileID: 21300000, guid: d4b382c6f10e7a64d8758e6a629b446b, type: 3}
-  _halfCured: {fileID: 21300000, guid: ead43e504489ac24fbc62cfa149bd4e4, type: 3}
-  _cured: {fileID: 21300000, guid: 5a3f6add1a066da42b7d8e087986c14c, type: 3}
+  _infected: {fileID: 21300000, guid: d9175253018f085409fc75bab016476c, type: 3}
+  _cured: {fileID: 21300000, guid: a442668a884dcfa40b8aff3186ece185, type: 3}
