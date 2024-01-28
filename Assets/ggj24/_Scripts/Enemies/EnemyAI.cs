@@ -8,7 +8,7 @@ public class EnemyAI : MonoBehaviour, IEnemy
 {
     private Peasant _peasantData;
     [SerializeField] SpriteRenderer _enemySprite;
-    private float _health;
+    private float _hitPoints;
     private Vector3 _startPosition;
     private Vector3 _startScale;
 
@@ -34,16 +34,16 @@ public class EnemyAI : MonoBehaviour, IEnemy
         _peasantData = peasantData;
 
         _enemySprite.sprite = _peasantData.Infected;
-        _health = _peasantData.MaxHealth;
+        _hitPoints = _peasantData.MaxHealth;
 
         transform.DOMoveX(-transform.position.x, _peasantData.WalkDuration).SetEase(Ease.Linear);
     }
 
     public void Tickle()
     {
-        _health -= _peasantData.DamageTaken;
+        _hitPoints -= _peasantData.DamageTaken;
 
-        if(_health <= 0f)
+        if(_hitPoints <= 0f)
         {
             _enemySprite.sprite = _peasantData.Cured;
         }
@@ -70,11 +70,25 @@ public class EnemyAI : MonoBehaviour, IEnemy
     {
         if(other.gameObject.tag == "Castle")
         {
-            var doorPos = FindChildWithTag(other.gameObject,"Door").transform.position;
+            if(_hitPoints <= 0)
+            {
+                var doorPos = FindChildWithTag(other.gameObject,"Door").transform.position;
 
-            transform.DOMove(doorPos,.7f);
-            transform.DOScale(_startScale *.4f ,.7f).OnComplete(()=> Clean());
-            // ScoreManager.GivePoints???
+                transform.DOMove(doorPos,.7f);
+                transform.DOScale(_startScale *.4f ,.7f).OnComplete(()=> Clean());
+                // ScoreManager.GivePoints???
+            }
+            else
+            {
+                var doorPos = FindChildWithTag(other.gameObject,"Door").transform.position;
+
+                transform.DOMove(doorPos,.7f).SetAutoKill(true);
+                transform.DOPunchRotation(Vector3.forward * 45, .3f);
+                transform.DOScale(_startScale *.4f ,.7f).OnComplete(()=> Clean());
+                GameManager.Instance.DamageCastle(1); // JULIO DO IT
+                // ScoreManager.GivePoints???
+            }
+
 
         }    
     }

@@ -14,16 +14,13 @@ public class HandManager : MonoBehaviour
     [SerializeField] SpriteRenderer _head;
     [SerializeField] Vector3 _headMovVec;
     [SerializeField] float _headMovDuration = 3f;
-    [SerializeField] int _headMovVibrato = 10;
-    [SerializeField] float _headMovElasticity = 1f;
+    [SerializeField] int _headMovVibrato = 5;
+    [SerializeField] float _headMovElasticity = .5f;
 
     // Start is called before the first frame update
     void Start()
     {
-        _head.transform.DOPunchPosition(_headMovVec,_headMovDuration,_headMovVibrato,_headMovElasticity).SetLoops(-1).OnStepComplete(
-            ()=>
-            _head.transform.DOPunchRotation(Vector3.forward * 45, .5f,10,1f)
-            );
+        _head.transform.DOPunchPosition(_headMovVec,_headMovDuration,_headMovVibrato,_headMovElasticity).SetLoops(-1);
         _currentHand = (Input.mousePosition.x >= Mathf.Epsilon) ? _rightHand : _leftHand;
     }
 

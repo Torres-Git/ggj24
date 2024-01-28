@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7de51c4c4f2ce4194f3433ca36de94, type: 3}
   m_Name: Manager_Game
   m_EditorClassIdentifier: 
-  EventSetupEnemy:
-    m_PersistentCalls:
-      m_Calls: []
-  EventStartFirstWave:
-    m_PersistentCalls:
-      m_Calls: []
+  _isPlayable: 0
+  _score: 0
+  _castleMaxHitPoints: 2
+  _castleAutoRegenDelay: 0
+  _castleCurrentHitPoints: 2

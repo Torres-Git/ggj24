@@ -16,3 +16,4 @@ MonoBehaviour:
   _enemyAmount: 12
   _enemyRightPos: {x: 12, y: -2, z: 0}
   _enemyLeftPos: {x: -12, y: -2, z: 0}
+  _areEnemiesReady: 1
