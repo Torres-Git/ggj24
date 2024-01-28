@@ -7,6 +7,7 @@ TagManager:
   - Castle
   - Bounds
   - Enemy
+  - Door
   layers:
   - Default
   - TransparentFX

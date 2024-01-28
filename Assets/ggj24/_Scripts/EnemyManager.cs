@@ -24,7 +24,16 @@ public class EnemyManager : Singleton<EnemyManager>
         for (int i = 0; i < _enemyAmount; i++)
         {
             var enemy = Instantiate(_enemyPrefab, parent.transform);
-            enemy.transform.position = (i%2 == 0)? _enemyRightPos: _enemyLeftPos;
+            if(i%2 == 0)
+            {
+                enemy.transform.position = _enemyRightPos;
+                enemy.EnemySprite.flipX = true;
+
+            }else
+            {
+                enemy.transform.position =_enemyLeftPos;
+                enemy.EnemySprite.flipX = false;
+            }
             _enemies.Add(enemy);
         }
 

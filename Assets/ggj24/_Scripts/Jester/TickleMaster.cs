@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 public class TickleMaster : MonoBehaviour
 {
+    [SerializeField] bool _isTickleAll = false;
     [SerializeField] SpriteAnim _spriteAnim;
     [SerializeField] float _tickleRadius;
     [SerializeField] LayerMask _layerMask;
@@ -33,19 +34,35 @@ public class TickleMaster : MonoBehaviour
         // Perform the circle cast
         RaycastHit2D[] hits = Physics2D.CircleCastAll(origin + _castOffset, _tickleRadius, direction, Mathf.Infinity, _layerMask);
 
-        // Process the hits
         if(hits.Length>0)
-        {                
-            var enemy = hits[0].collider.GetComponent<IEnemy>();
-            if(enemy!= null)
+            if(_isTickleAll)
             {
-                enemy.Tickle();
-            }
+                foreach(var hit in hits)
+                {
+                    var enemy = hit.collider.GetComponent<IEnemy>();
+                    if(enemy!= null)
+                    {
+                        enemy.Tickle();
+                    }
 
-            _isTickling = true;
-            _animTween = transform.DOPunchRotation(Vector3.forward * 45, .2f).OnComplete(()=>_isTickling = false).SetAutoKill(true);   
-        }
+                    _isTickling = true;
+                    _animTween = transform.DOPunchRotation(Vector3.forward * 45, .2f).OnComplete(()=>_isTickling = false).SetAutoKill(true);   
+                }
+            }
+            else
+            {                
+                var enemy = hits[0].collider.GetComponent<IEnemy>();
+                if(enemy!= null)
+                {
+                    enemy.Tickle();
+                }
+
+                _isTickling = true;
+                _animTween = transform.DOPunchRotation(Vector3.forward * 45, .2f).OnComplete(()=>_isTickling = false).SetAutoKill(true);   
+            }
+        
     }
+
 
 #region Gizmos
     private void OnDrawGizmos()

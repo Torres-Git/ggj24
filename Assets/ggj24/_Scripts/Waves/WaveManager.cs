@@ -24,6 +24,7 @@ public class WaveManager : Singleton<WaveManager>
     {
         Debug.Log("Enemy Manager:" + manager.name);
         _enemyManager = manager;
+        _waveNumber = 0;
         _waveIterator = _waves.GetEnumerator();
         StartNextWave();
     }
@@ -51,7 +52,7 @@ public class WaveManager : Singleton<WaveManager>
 
     private void ProcWaveStartActions(int waveNumber)
     {
-        Debug.Log("Wave Started!" );
+        Debug.Log("Wave: " + waveNumber + "/" + _waves.Count);
          // UIManager.instance.DisplayAlertMsg("Wave: " + waveNumber + "/" + _waves.Count, 2.5f);
     }
 
@@ -70,6 +71,7 @@ public class WaveManager : Singleton<WaveManager>
         }
         Debug.Log("Wave Started!" );
         //yield return StartCoroutine(COR_WaitForWaveCleanUp());
+        GameManager.Instance.HealCastle(1);
         yield return Yielders.Get(1f);
 
         Debug.Log("Wave Completed!");

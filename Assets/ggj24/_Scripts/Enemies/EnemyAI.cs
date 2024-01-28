@@ -7,13 +7,14 @@ using UnityEngine.UIElements;
 public class EnemyAI : MonoBehaviour, IEnemy
 {
     private Peasant _peasantData;
-    private SpriteRenderer _enemySprite;
+    [SerializeField] SpriteRenderer _enemySprite;
     private float _health;
-    private float _halfHealth;
     private Vector3 _startPosition;
+    private Vector3 _startScale;
 
     private bool _isAvailable = true;
     public bool IsAvailable { get => _isAvailable;  }
+    public SpriteRenderer EnemySprite { get => _enemySprite; set => _enemySprite = value; }
 
 
     // Start is called before the first frame update
@@ -21,6 +22,7 @@ public class EnemyAI : MonoBehaviour, IEnemy
     {
         _enemySprite = GetComponent<SpriteRenderer>();
         _startPosition = transform.position;
+        _startScale = transform.localScale;
     }
 
     public void Init(Peasant peasantData)
@@ -33,7 +35,6 @@ public class EnemyAI : MonoBehaviour, IEnemy
 
         _enemySprite.sprite = _peasantData.Infected;
         _health = _peasantData.MaxHealth;
-        _halfHealth = _health * .5f;
 
         transform.DOMoveX(-transform.position.x, _peasantData.WalkDuration).SetEase(Ease.Linear);
     }
@@ -42,10 +43,6 @@ public class EnemyAI : MonoBehaviour, IEnemy
     {
         _health -= _peasantData.DamageTaken;
 
-        if(_health <= _halfHealth)
-        {
-            _enemySprite.sprite = _peasantData.HalfCured;
-        }
         if(_health <= 0f)
         {
             _enemySprite.sprite = _peasantData.Cured;
@@ -66,14 +63,19 @@ public class EnemyAI : MonoBehaviour, IEnemy
 
         _isAvailable = true;
         transform.position = _startPosition;
+        transform.localScale = _startScale;
     }
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
         if(other.gameObject.tag == "Castle")
         {
-            // ScoreManager.GivePoints
-            Clean();
+            var doorPos = FindChildWithTag(other.gameObject,"Door").transform.position;
+
+            transform.DOMove(doorPos,.7f);
+            transform.DOScale(_startScale *.4f ,.7f).OnComplete(()=> Clean());
+            // ScoreManager.GivePoints???
+
         }    
     }
 
@@ -86,6 +88,20 @@ public class EnemyAI : MonoBehaviour, IEnemy
         }    
     }
 
+
+    private GameObject FindChildWithTag(GameObject parent, string tag) 
+    {
+        GameObject child = null;
+ 
+       foreach(Transform transform in parent.transform) {
+          if(transform.CompareTag(tag)) {
+             child = transform.gameObject;
+            break;
+        }
+   }
+ 
+   return child;
+}
 
 }
 public interface IEnemy

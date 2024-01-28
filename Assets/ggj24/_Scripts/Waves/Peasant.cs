@@ -10,7 +10,7 @@ public class Peasant : DescriptionBasedSO
     [SerializeField]  float _damageTaken;
     [SerializeField]  float _jumpDuration;
     [SerializeField]  float _fallDuration;
-    [SerializeField]  Sprite _infected, _halfCured, _cured;
+    [SerializeField]  Sprite _infected, _cured;
 
     public string Name { get => _peasantName;  }
     public float WalkDuration { get => _walkDuration; }
@@ -20,7 +20,6 @@ public class Peasant : DescriptionBasedSO
     public float JumpDuration { get => _jumpDuration;  }
     public float FallDuration { get => _fallDuration;  }
     public Sprite Infected { get => _infected; }
-    public Sprite HalfCured { get => _halfCured; }
     public Sprite Cured { get => _cured;  }
 
 }

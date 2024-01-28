@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 3279191501945007399}
   - component: {fileID: 8948263522911817870}
   m_Layer: 0
-  m_Name: BackGround
+  m_Name: BackGround_NightDay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotationAxis: {x: 0, y: 0, z: 1}
-  _cycleDuration: 90
+  _cycleDuration: 60
 --- !u!1 &5349219193504021606
 GameObject:
   m_ObjectHideFlags: 0

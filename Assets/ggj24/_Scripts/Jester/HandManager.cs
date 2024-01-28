@@ -5,12 +5,25 @@ using DG.Tweening;
 
 public class HandManager : MonoBehaviour
 {
-    [SerializeField] MouseFollow _leftHand, _rightHand;
+    [Header("Hands")]
+    [SerializeField] MouseFollow _leftHand;
+     [SerializeField] MouseFollow _rightHand;
     private MouseFollow _currentHand;
+
+    [Header("Head")]
+    [SerializeField] SpriteRenderer _head;
+    [SerializeField] Vector3 _headMovVec;
+    [SerializeField] float _headMovDuration = 3f;
+    [SerializeField] int _headMovVibrato = 10;
+    [SerializeField] float _headMovElasticity = 1f;
 
     // Start is called before the first frame update
     void Start()
     {
+        _head.transform.DOPunchPosition(_headMovVec,_headMovDuration,_headMovVibrato,_headMovElasticity).SetLoops(-1).OnStepComplete(
+            ()=>
+            _head.transform.DOPunchRotation(Vector3.forward * 45, .5f,10,1f)
+            );
         _currentHand = (Input.mousePosition.x >= Mathf.Epsilon) ? _rightHand : _leftHand;
     }
 
@@ -27,7 +40,6 @@ public class HandManager : MonoBehaviour
         {
             SwitchHands();
         }
-
     }
 
     private void SwitchHands()
